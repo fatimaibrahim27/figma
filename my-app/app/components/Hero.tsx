@@ -4,70 +4,85 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 const Hero = () => {
-  // Timer logic (Countdown to a specific date)
   const [timeRemaining, setTimeRemaining] = useState<string>('');
+  const [mounted, setMounted] = useState(false); // To handle hydration mismatch
+
+  // Function to calculate remaining time
+  const calculateTimeRemaining = () => {
+    const countdownDate = new Date('2024-12-31T23:59:59').getTime();
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    if (distance <= 0) return 'EXPIRED';
+
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    return `${hours}h ${minutes}m ${seconds}s`;
+  };
 
   useEffect(() => {
-    const countdownDate = new Date('2024-12-31T23:59:59').getTime(); // Target date for countdown
-
+    setMounted(true); // Component has mounted
     const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
+      const time = calculateTimeRemaining();
+      setTimeRemaining(time);
 
-      // Calculate time remaining
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      setTimeRemaining(`${hours}h ${minutes}m ${seconds}s`);
-
-      // Stop the timer once the countdown finishes
-      if (distance < 0) {
+      if (time === 'EXPIRED') {
         clearInterval(interval);
-        setTimeRemaining('EXPIRED');
       }
     }, 1000);
 
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
 
+  if (!mounted) {
+    return null; // Avoid hydration mismatch
+  }
+
   return (
-    <div className="w-full h-auto flex justify-center items-center mt-10">
-      <div className="w-[90%] max-w-screen-lg">
-        {/* Heading and Timer Section */}
+    <div className="flex justify-center items-center mt-10 w-full h-auto">
+      <div className="max-w-screen-lg w-[90%]">
+        {/* Header Section */}
         <div className="text-left mb-4">
-          <span className="text-red-500 font-extralight text-sm sm:text-base">Today's</span>
-          <h2 className="font-semibold text-xl sm:text-2xl">Flash Sale</h2>
+          <span className="text-red-500 text-sm sm:text-base font-light">Today's</span>
+          <h2 className="text-xl sm:text-2xl font-semibold">Flash Sale</h2>
         </div>
 
-        {/* Centered Timer */}
-        <div className="flex justify-center items-center mb-4">
-          <div className="text-center text-sm sm:text-lg font-medium text-gray-700">
-            <p>Time Left:</p>
-            <p className="font-bold text-red-500">{timeRemaining}</p>
-          </div>
+        {/* Timer Section */}
+        <div className="text-center mb-6">
+          <p className="text-gray-700 text-sm sm:text-lg font-medium">Time Left:</p>
+          <p className={`font-bold ${timeRemaining === 'EXPIRED' ? 'text-gray-500' : 'text-red-500'} text-lg`}>
+            {timeRemaining}
+          </p>
         </div>
 
-        {/* Products Section */}
-        <div className="flex justify-between items-center overflow-x-auto scrollbar-hide">
+        {/* Product Section */}
+        <div className="flex gap-4 overflow-x-auto scrollbar-hide">
           {Array.from({ length: 4 }).map((_, index) => (
-            <div key={index} className="w-[200px] h-[150px] flex-shrink-0">
+            <div
+              key={index}
+              className="w-[200px] h-[150px] flex-shrink-0 bg-gray-100 rounded-md shadow-md flex items-center justify-center"
+            >
               <Image
-                src={`/Cart With Flat Discount (${index}).png`}
+                src={`/Cart-With-Flat-Discount-${index}.png`} // Ensure these files exist in the public folder
                 width={200}
                 height={150}
                 className="object-contain"
-                alt={`Product ${index + 1} Image`}
+                alt={`Product ${index + 1}`}
+                onError={(e) => {
+                  e.currentTarget.src = '/placeholder.png'; // Fallback to placeholder if image fails
+                }}
               />
             </div>
           ))}
         </div>
 
-        {/* Button */}
+        {/* CTA Button */}
         <div className="text-center mt-6">
           <button
-            className="py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600 transition-all duration-200"
             onClick={() => alert('Redirecting to all products...')}
+            className="py-2 px-6 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-200"
           >
             View All Products
           </button>

@@ -40,7 +40,7 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="flex space-x-5 items-center mb-3 sm:mb-0">
-          <a href="/" className="hover:underline">Home</a>
+        <Link href="/Home">Home</Link>
           <Link href="/About">About</Link>
           <Link href="/Contact">Contact</Link>
           <Link href="/Signup">Signup</Link>
