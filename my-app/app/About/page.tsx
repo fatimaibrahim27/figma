@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function About() {
     return (
@@ -14,14 +15,16 @@ export default function About() {
                 <div className="lg:w-1/2">
                     <h2 className="text-3xl font-bold mb-4">Our Story</h2>
                     <p className="text-gray-700">
-                        Launched in 2015, Exclusive is South Asia's premier online shopping marketplace with an active presence in Bangladesh.
+                        Launched in 2015, Exclusive is South Asia&apos;s premier online shopping marketplace with an active presence in Bangladesh.
                         It has over 10,500 sellers, 300 brands, and serves 3 million customers across the region.
                     </p>
                 </div>
                 <div className="lg:w-1/2 flex justify-center">
-                    <img
+                    <Image
                         src="/Side-Image-1.png"
                         alt="Our Story"
+                        width={300} // Adjust the width as needed
+                        height={300} // Adjust the height as needed
                         className="w-full max-w-xs lg:max-w-sm rounded-lg"
                     />
                 </div>
@@ -56,68 +59,16 @@ export default function About() {
                         className="bg-white shadow-lg rounded-md p-6 flex flex-col items-center text-center"
                     >
                         <div className="w-16 h-16 flex items-center justify-center bg-gray-200 rounded-full mb-4">
-                            <img src={item.icon} alt={item.label} className="w-8 h-8" />
+                            <Image
+                                src={item.icon}
+                                alt={item.label}
+                                width={32}
+                                height={32}
+                                className="w-8 h-8"
+                            />
                         </div>
                         <h3 className="text-2xl font-bold">{item.count}</h3>
                         <p className="text-gray-600">{item.label}</p>
-                    </div>
-                ))}
-            </div>
-
-            {/* Team Section */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-16">
-                {[
-                    {
-                        name: "Tom Cruise",
-                        role: "Founder & Chairman",
-                        image: "/Frame-874.png",
-                    },
-                    {
-                        name: "Emma Watson",
-                        role: "Co-Founder",
-                        image: "/Frame-875.png",
-                    },
-                ].map((member, index) => (
-                    <div key={index} className="flex flex-col items-center">
-                        <img
-                            src={member.image}
-                            alt={member.name}
-                            className="w-48 h-48 rounded-lg mb-4"
-                        />
-                        <h3 className="text-xl font-semibold">{member.name}</h3>
-                        <p className="text-gray-600">{member.role}</p>
-                    </div>
-                ))}
-            </div>
-
-            {/* Benefits Section */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16">
-                {[
-                    {
-                        title: "FREE AND FAST DELIVERY",
-                        description: "Free delivery for all orders over $140",
-                        icon: "/img2/icon-Customer.png",
-                    },
-                    {
-                        title: "FRIENDLY SUPPORT",
-                        description: "24/7 customer support",
-                        icon: "/img2/icon-delivery.png",
-                    },
-                    {
-                        title: "MONEY BACK GUARANTEE",
-                        description: "We return money within 30 days",
-                        icon: "/img2/icon-Moneybag.png",
-                    },
-                ].map((benefit, index) => (
-                    <div
-                        key={index}
-                        className="bg-white shadow-lg rounded-md p-6 flex flex-col items-center text-center"
-                    >
-                        <div className="w-16 h-16 flex items-center justify-center bg-gray-200 rounded-full mb-4">
-                            <img src={benefit.icon} alt={benefit.title} className="w-8 h-8" />
-                        </div>
-                        <h3 className="text-xl font-bold">{benefit.title}</h3>
-                        <p className="text-gray-600">{benefit.description}</p>
                     </div>
                 ))}
             </div>
