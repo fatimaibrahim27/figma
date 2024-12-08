@@ -26,8 +26,8 @@ export default function Header() {
           <h4 className="text-xs sm:text-sm">
             Summer Sale For All Swimsuits And Free Express Delivery - OFF <b>50%!</b>
           </h4>
-          <Link href="/shop" className="text-white font-semibold underline ml-1">
-            Shop Now
+          <Link href="/shop">
+            <a className="text-white font-semibold underline ml-1">Shop Now</a>
           </Link>
         </div>
       </header>
@@ -40,10 +40,18 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="flex space-x-5 items-center mb-3 sm:mb-0">
-        <Link href="/Home">Home</Link>
-          <Link href="/About">About</Link>
-          <Link href="/Contact">Contact</Link>
-          <Link href="/Signup">Signup</Link>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+          <Link href="/About">
+            <a>About</a>
+          </Link>
+          <Link href="/Contact">
+            <a>Contact</a>
+          </Link>
+          <Link href="/Signup">
+            <a>Signup</a>
+          </Link>
         </nav>
 
         {/* Search Bar */}
@@ -80,13 +88,15 @@ export default function Header() {
 
           {/* Wishlist Icon */}
           <Link href="/wishlist">
-            <Image
-              src="/wish.jpg"
-              alt="Wishlist"
-              width={32}
-              height={32}
-              className="object-contain"
-            />
+            <a>
+              <Image
+                src="/wish.jpg"
+                alt="Wishlist"
+                width={32}
+                height={32}
+                className="object-contain"
+              />
+            </a>
           </Link>
 
           {/* Account Icon */}
@@ -107,11 +117,31 @@ export default function Header() {
             {/* Account Dropdown Menu */}
             {isAccountMenuOpen && (
               <ul className="absolute right-0 bg-white shadow-lg rounded-md mt-2 text-sm w-40">
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Orders</li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Cancellations</li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Manage Account</li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Reviews</li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Log Out</li>
+                <li>
+                  <button className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    My Orders
+                  </button>
+                </li>
+                <li>
+                  <button className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    My Cancellations
+                  </button>
+                </li>
+                <li>
+                  <button className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    Manage Account
+                  </button>
+                </li>
+                <li>
+                  <button className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    Reviews
+                  </button>
+                </li>
+                <li>
+                  <button className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    Log Out
+                  </button>
+                </li>
               </ul>
             )}
           </div>
@@ -156,7 +186,7 @@ export default function Header() {
           <li>Homes and Lifestyle</li>
           <li>Medicines</li>
           <li>Sports and Outdoor</li>
-          <li>Baby's and Toy's</li>
+          <li>Baby&apos;s and Toy&apos;s</li>
         </ul>
 
         {/* Image */}
