@@ -20,7 +20,7 @@ export default function About() {
                 </div>
                 <div className="lg:w-1/2 flex justify-center">
                     <img
-                        src="/Side Image (1).png"
+                        src="/Side-Image-1.png"
                         alt="Our Story"
                         className="w-full max-w-xs lg:max-w-sm rounded-lg"
                     />
@@ -70,12 +70,12 @@ export default function About() {
                     {
                         name: "Tom Cruise",
                         role: "Founder & Chairman",
-                        image: "/Frame 874.png",
+                        image: "/Frame-874.png",
                     },
                     {
                         name: "Emma Watson",
                         role: "Co-Founder",
-                        image: "/Frame 875.png",
+                        image: "/Frame-875.png",
                     },
                 ].map((member, index) => (
                     <div key={index} className="flex flex-col items-center">
