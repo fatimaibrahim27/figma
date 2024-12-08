@@ -26,9 +26,9 @@ export default function Header() {
           <h4 className="text-xs sm:text-sm">
             Summer Sale For All Swimsuits And Free Express Delivery - OFF <b>50%!</b>
           </h4>
-          <a href="#" className="text-white font-semibold underline ml-1">
+          <Link href="/shop" className="text-white font-semibold underline ml-1">
             Shop Now
-          </a>
+          </Link>
         </div>
       </header>
       <br />
@@ -40,9 +40,8 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="flex space-x-5 items-center mb-3 sm:mb-0">
-          <a href="#" className="hover:underline">Home</a>
+          <a href="/" className="hover:underline">Home</a>
           <Link href="/About">About</Link>
-
           <Link href="/Contact">Contact</Link>
           <Link href="/Signup">Signup</Link>
         </nav>
@@ -78,18 +77,16 @@ export default function Header() {
             height={32}
             className="object-contain"
           />
-          </div>
-                  <div className="flex items-center space-x-4">
-          {/* Cart Icon */}
-          <Link href="/wishlist">
-          <img
-            src="/wish.jpg"
-            alt="Cart"
-            width={32}
-            height={32}
-            className="object-contain"
-/>
 
+          {/* Wishlist Icon */}
+          <Link href="/wishlist">
+            <Image
+              src="/wish.jpg"
+              alt="Wishlist"
+              width={32}
+              height={32}
+              className="object-contain"
+            />
           </Link>
 
           {/* Account Icon */}
@@ -98,7 +95,7 @@ export default function Header() {
               onClick={toggleAccountMenu}
               className="cursor-pointer flex items-center"
             >
-              <img
+              <Image
                 src="/acc.jpg"
                 alt="Account"
                 width={32}
@@ -164,9 +161,11 @@ export default function Header() {
 
         {/* Image */}
         <div className="flex-2 sm:w-[1000px] md:w-[700px] w-full mx-auto">
-          <img
+          <Image
             src="/Frame 560 (1).png"
             alt="frame"
+            width={700}
+            height={500}
             className="w-full h-auto object-contain"
           />
         </div>

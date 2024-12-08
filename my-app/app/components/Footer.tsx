@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -21,7 +22,6 @@ const Footer = () => {
             <li className="text-sm text-gray-400 hover:text-white cursor-pointer">Help Center</li>
             <li className="text-sm text-gray-400 hover:text-white cursor-pointer">Contact Us</li>
             <li className="text-sm text-gray-400 hover:text-white cursor-pointer">Order Tracking</li>
-            
           </ul>
         </div>
 
@@ -54,10 +54,12 @@ const Footer = () => {
             Save 30% with App now.
           </p>
           <div className="flex space-x-2 mb-2">
-            <img
-              src="\scan.jpg"
+            <Image
+              src="/scan.jpg"
               alt="Google Play Store"
-              className="w-26 h-16 object-contain"
+              width={104}
+              height={64}
+              className="object-contain"
             />
           </div>
         </div>

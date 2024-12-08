@@ -15,7 +15,7 @@ const Hero = () => {
       // Calculate time remaining
       const hours = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const minutes = Math.floor((distance % (1000 * 60)) / 1000);
-      const seconds = Math.floor((distance % 1000) / 100);
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000); // Corrected seconds calculation
 
       setTimeRemaining(`${hours}h ${minutes}m ${seconds}s`);
 
@@ -54,28 +54,28 @@ const Hero = () => {
             <img
               src="/Cart With Flat Discount.png"
               className="w-full h-full object-contain"
-              alt="Product 1"
+              alt="Product 1 Image"
             />
           </div>
           <div className="w-[200px] h-[150px] flex-shrink-0">
             <img
               src="/Cart With Flat Discount (1).png"
               className="w-full h-full object-contain"
-              alt="Product 2"
+              alt="Product 2 Image"
             />
           </div>
           <div className="w-[200px] h-[150px] flex-shrink-0">
             <img
               src="/Cart With Flat Discount (2).png"
               className="w-full h-full object-contain"
-              alt="Product 3"
+              alt="Product 3 Image"
             />
           </div>
           <div className="w-[200px] h-[150px] flex-shrink-0">
             <img
               src="/Cart With Flat Discount (3).png"
               className="w-full h-full object-contain"
-              alt="Product 4"
+              alt="Product 4 Image"
             />
           </div>
         </div>
@@ -95,3 +95,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
