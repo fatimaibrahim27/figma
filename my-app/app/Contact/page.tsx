@@ -1,3 +1,5 @@
+"use client"; // Add this line at the top of your file
+
 import React, { useState } from 'react';
 
 export default function Contact() {
